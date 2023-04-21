@@ -50,7 +50,7 @@ const VideoPlayer = memo(({ user, UID }) => {
       ref={ref}
       id={user.uid}
       onClick={enLargeFrame}
-      className="w-[120px] h-[120px] overflow-hidden cursor-pointer rounded-md border border-orange-500 md:w-[150px] md:h-[150px] xl:w-[180px] xl:h-[180px] bg-gradient-to-br from-orange-500 to-red-500"
+      className="w-[300px] h-[300px] overflow-hidden cursor-pointer rounded-md border border-orange-500 md:w-[170px] md:h-[170px] xl:w-[250px] xl:h-[250px] bg-gradient-to-br from-orange-500 to-red-500"
     ></div>
   );
 });
