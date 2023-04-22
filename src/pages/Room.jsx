@@ -19,13 +19,16 @@ function Room() {
 
   useEffect(() => {
     // Check if username exists in sessionStorage
-    if (!sessionStorage.getItem('username')) {
-      const displayName = prompt('You do not have a display name. \nPlease enter your display name for this session.');
-      if (displayName) {
-        sessionStorage.setItem('username', displayName);
+    const displayName = sessionStorage.getItem('username');
+    if (!displayName) {
+      const displayNamePromptResult = prompt('You do not have a display name. \nPlease enter your display name for this session.');
+      if (displayNamePromptResult) {
+        sessionStorage.setItem('username', displayNamePromptResult);
+      } else {
+        navigate('/');
       }
     }
-  }, [])
+  }, []);
 
   const screenShareRef = useRef()
 
@@ -33,6 +36,15 @@ function Room() {
     showParticipants: false,
     showLiveChat: false
   })
+
+  useEffect(() => {
+    if (showCtrl.showParticipants || showCtrl.showLiveChat) {
+      const elem = document.getElementById('video-holder');
+      elem.scrollTop = 0;
+      elem.style.overflow = 'hidden';
+    }
+  }, [showCtrl.showParticipants, showCtrl.showLiveChat]);
+
   const [localTracks, setLocalTracks] = useState({ audio: '', video: '' })
 
   const [joined, setJoined] = useState(false)
@@ -44,9 +56,6 @@ function Room() {
   const [channelRes, setChannelRes] = useState(null)
   const [totalMembers, setTotalMembers] = useState(0)
   const [chats, setChats] = useState([])
-
-  // let channelRes = null
-  // let rtmClient = null
 
   const updateMemberTotal = async (members) => {
     setTotalMembers(members.length)

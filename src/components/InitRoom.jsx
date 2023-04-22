@@ -21,7 +21,7 @@ function InitRoom({ setShowCreateRoom }) {
   return (
     <>
       <div className="fixed z-20 w-screen h-screen top-0 left-0 flex items-center justify-center bg-slate-800/50">
-        <div className="w-[98vw] h-auto overflow-y-auto border border-orange-500 bg-slate-900 rounded-lg md:w-[500px] md:h-[400px]">
+        <div className="w-[98vw] h-auto max-h-screen overflow-y-auto border border-orange-500 bg-slate-900 rounded-lg md:w-[500px] md:h-[400px]">
           <div className="py-3 bg-slate-800 flex items-center justify-between">
             <b className="text-lg w-[70%] text-end font-bold">Create or Join Room</b>
             <b className='w-[30%] pe-2 text-end'>

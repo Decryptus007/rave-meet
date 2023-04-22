@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Navigate, Route, Routes, useLocation } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
@@ -10,6 +10,14 @@ function App() {
   const location = useLocation();
 
   const [showCreateRoom, setShowCreateRoom] = useState(false)
+
+  useEffect(() => {
+    if (showCreateRoom) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+  }, [showCreateRoom]);
 
   return (
     <>
